@@ -1,8 +1,8 @@
-const exampleAdditionInput = {
+const exampleInput = {
   num1: 8,
-  num2: 2.9,
-  operation: '/',
-}
+  num2: 4,
+  operation: 'Divide',
+};
 
 const operations = [
   'add', '+', 
@@ -12,11 +12,11 @@ const operations = [
 ];
 
 
-function isOperationIncluded(operation) {
+const isOperationIncluded = function(operation) {
   return operations.includes(operation);
-}
+};
 
-function areNumbersValid(num1, num2) {
+const areNumbersValid = function(num1, num2) {
   if (typeof num1 === 'string' || typeof num2 === 'string') {
     return false;
   } else if (num1 === null || num2 === null) {
@@ -26,30 +26,30 @@ function areNumbersValid(num1, num2) {
   } else {
     return true;
   }
-}
+};
 
-function add(inputObject) {
+const add = function(inputObject) {
   return inputObject.num1 + inputObject.num2;
-}
+};
 
-function subtract(inputObject) {
+const subtract = function(inputObject) {
   return inputObject.num1 - inputObject.num2;
-}
+};
 
-function multiply(inputObject) {
+const multiply = function(inputObject) {
   return inputObject.num1 * inputObject.num2;
-}
+};
 
-function divide(inputObject) {
+const divide = function(inputObject) {
   if (inputObject.num2 === 0) {
     console.log("Division by zero undefined.");
     return;
   }
 
   return inputObject.num1 / inputObject.num2;
-}
+};
 
-function performCalculation(inputObject) {
+const performCalculation = function(inputObject) {
   let operation = inputObject.operation.toLowerCase();
 
   let operationValidity = isOperationIncluded(operation);
@@ -69,6 +69,6 @@ function performCalculation(inputObject) {
     console.log(`Either calculator does not support ${inputObject.operation} operation.`);
     console.log(`Or numbers provided (${inputObject.num1} or ${inputObject.num2}) are not valid.`)
   }
-}
+};
 
-console.log(performCalculation(exampleAdditionInput));
+console.log(performCalculation(exampleInput));
