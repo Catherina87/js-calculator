@@ -1,6 +1,6 @@
 const exampleAdditionInput = {
-  num1: 10.5,
-  num2: 2,
+  num1: 8,
+  num2: 2.9,
   operation: '/',
 }
 
@@ -14,6 +14,18 @@ const operations = [
 
 function isOperationIncluded(operation) {
   return operations.includes(operation);
+}
+
+function areNumbersValid(num1, num2) {
+  if (typeof num1 === 'string' || typeof num2 === 'string') {
+    return false;
+  } else if (num1 === null || num2 === null) {
+    return false;
+  } else if (num1 === undefined || num2 === undefined) {
+    return false;
+  } else {
+    return true;
+  }
 }
 
 function add(inputObject) {
@@ -40,9 +52,10 @@ function divide(inputObject) {
 function performCalculation(inputObject) {
   let operation = inputObject.operation.toLowerCase();
 
-  let result = isOperationIncluded(operation);
+  let operationValidity = isOperationIncluded(operation);
+  let numbersValidity = areNumbersValid(inputObject.num1, inputObject.num2);
 
-  if (result) {
+  if (operationValidity && numbersValidity) {
     if (operation === 'add' || operation === '+') {
       return add(inputObject);
     } else if (operation === 'subtract' || operation === '-') {
@@ -52,6 +65,9 @@ function performCalculation(inputObject) {
     } else if (operation === 'divide' || operation === '/') {
       return divide(inputObject);
     }
+  } else {
+    console.log(`Either calculator does not support ${inputObject.operation} operation.`);
+    console.log(`Or numbers provided (${inputObject.num1} or ${inputObject.num2}) are not valid.`)
   }
 }
 
