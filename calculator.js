@@ -1,7 +1,7 @@
 const exampleInput = {
   num1: 8,
-  num2: 4,
-  operation: 'Divide',
+  num2: 0,
+  operation: '/',
 };
 
 const operations = [
@@ -12,11 +12,11 @@ const operations = [
 ];
 
 
-const isOperationIncluded = function(operation) {
+const isOperationIncluded = (operation) => {
   return operations.includes(operation);
 };
 
-const areNumbersValid = function(num1, num2) {
+const areNumbersValid = (num1, num2) => {
   if (typeof num1 === 'string' || typeof num2 === 'string') {
     return false;
   } else if (num1 === null || num2 === null) {
@@ -28,19 +28,13 @@ const areNumbersValid = function(num1, num2) {
   }
 };
 
-const add = function(inputObject) {
-  return inputObject.num1 + inputObject.num2;
-};
+const add = (inputObject) => inputObject.num1 + inputObject.num2;
 
-const subtract = function(inputObject) {
-  return inputObject.num1 - inputObject.num2;
-};
+const subtract = (inputObject) => inputObject.num1 - inputObject.num2;
 
-const multiply = function(inputObject) {
-  return inputObject.num1 * inputObject.num2;
-};
+const multiply = (inputObject) => inputObject.num1 * inputObject.num2;
 
-const divide = function(inputObject) {
+const divide = (inputObject) => {
   if (inputObject.num2 === 0) {
     console.log("Division by zero undefined.");
     return;
@@ -49,7 +43,7 @@ const divide = function(inputObject) {
   return inputObject.num1 / inputObject.num2;
 };
 
-const performCalculation = function(inputObject) {
+const performCalculation = (inputObject) => {
   let operation = inputObject.operation.toLowerCase();
 
   let operationValidity = isOperationIncluded(operation);
