@@ -1,7 +1,7 @@
 const exampleInput = {
   num1: 8,
-  num2: 0,
-  operation: '/',
+  num2: 0.9,
+  operation: 'MULtiplY',
 };
 
 const operations = [
@@ -40,7 +40,8 @@ const divide = (inputObject) => {
     return;
   }
 
-  return inputObject.num1 / inputObject.num2;
+  divisionResult = inputObject.num1 / inputObject.num2;
+  return Math.round(divisionResult * 100) / 100;
 };
 
 const performCalculation = (inputObject) => {
